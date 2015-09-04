@@ -7,4 +7,4 @@ Yleisiä linkkejä:
 
 ## Työn aihe
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html) 
+Opintoneuvonnan UKK eli [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Opintoneuvonnan_usein_kysytyt_kysymykset.html) 
