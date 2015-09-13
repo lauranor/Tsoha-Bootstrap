@@ -1,11 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="page-header">
-    <h1>Tervetuloa Tsoha Bootstrappiin!</h1>
-  </div>
+<div class="page-header">
+    <h1>Opintotoimiston UKK</h1>
+</div>
 
-  <p>
-    <a href="http://tsoha.github.io" class="btn btn-primary btn-lg">Tutustu materiaaliin <span class="glyphicon glyphicon-chevron-right"></span></a>
-  </p>
+<p>
+    <a href="http://google.com" class="btn btn-primary btn-lg">Etsi aihealueen mukaan<span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="http://tsoha.github.io" class="btn btn-primary btn-lg pull-right">Esitä uusi kysymys<span class="glyphicon glyphicon-chevron-right"></span></a>
+</p>
+
+<p class="lead"> 
+    Viimeisimmät kysymykset:
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Otsikko</th>
+            <th>Aihealue</th>
+            <th>Päivämäärä</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
 {% endblock %}
