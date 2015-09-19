@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Tähän pitäisi tulla kysymyksen otsikko</h1>
+<div class="form-group">
+    <input type="text" class="form-control" value="Ja tähän se itse kysymys.">
+</div>
+
+<!-- Tiedot tulee listana tähän -->
+<ul>
+    <li><strong>Päivämäärä:</strong> </li>
+    <li><strong>Aihealue:</strong> </li>
+    <li><strong>Vastattu:</strong> <label class="label label-danger">EI</label></li>
+    <li><strong>Vastaaja:</strong> </li>
+</ul>
+<!-- Kuvaus tulee tähän -->
+<div class="form-group">
+    <input type="text" class="form-control" value="Ja tähän sitten vastaus esitettyyn kysymykseen.">
+</div>
+{% endblock %}

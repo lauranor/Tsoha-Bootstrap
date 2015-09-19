@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Esitä uusi kysymys</h1>
+
+<!-- Kaikki lomakkeen elementit form-tagin sisään -->
+<form>
+    <!-- Tekstikenttä käyttäjätunnukselle -->
+    <div>
+        <label>nimi</label>
+        <input type="text" placeholder="">
+    </div>
+
+    <div>
+        <label>sähköpostiosoite</label>
+        <input type="text" placeholder="">
+    </div>
+    <div>
+        <label>kysymys</label>
+        <textarea class="form-control"> Tähän pitäis sitten tulla kysymys
+        </textarea>
+    </div>
+
+    <div class="row">
+    <button type="submit" class="btn btn-primary">lähetä</button>
+    
+</form>
+{% endblock %}
+
