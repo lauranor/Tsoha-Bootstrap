@@ -17,12 +17,12 @@ class Question extends BaseModel {
         foreach ($rows as $row) {
             $questions[] = new Question(array(
                 'id' => $row['id'],
-                'date' => $row['date'],
+                'added' => $row['added'],
                 'questiontext' => $row['questiontext'],
                 'subject' => $row['subject'],
-                'status' => $row['status'],
                 'student_id' => $row['student_id'],
-                'answer_id' => $row['answer_id']
+                'answer_id' => $row['answer_id'],
+                'status' => $row['status']
             ));
         }
 
@@ -37,12 +37,12 @@ class Question extends BaseModel {
         if ($row) {
             $question = new Question(array(
                 'id' => $row['id'],
-                'date' => $row['date'],
+                'added' => $row['added'],
                 'questiontext' => $row['questiontext'],
                 'subject' => $row['subject'],
-                'status' => $row['status'],
                 'student_id' => $row['student_id'],
-                'answer_id' => $row['answer_id']
+                'answer_id' => $row['answer_id'],
+                'status' => $row['status']
             ));
 
             return $question;
