@@ -1,6 +1,6 @@
 <?php
 
-require 'app/models/student.php';
+//require 'app/models/student.php';
 
 class HelloWorldController extends BaseController {
 
