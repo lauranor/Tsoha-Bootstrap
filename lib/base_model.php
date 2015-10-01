@@ -25,5 +25,17 @@
 
       return $errors;
     }
+    
+    public function validate_string_length($string, $length) {
+        $errors = array();
+        
+        if ($this->$string == '' || $this->$string == null) {
+            $errors[] = 'Tekstikenttä ei saa olla tyhjä.';
+        }
+        if(strlen($this->$string) < 5) {
+            $errors[] = 'Antamasi syöte on liian lyhyt.';
+        }
+        return $errors;
+    }
 
   }

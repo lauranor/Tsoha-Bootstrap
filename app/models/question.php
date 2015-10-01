@@ -2,7 +2,7 @@
 
 class Question extends BaseModel {
 
-    public $id, $date, $questiontext, $subject, $status, $student_id, $answer_id;
+    public $id, $date, $questiontext, $title, $subject, $status, $student_id;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -18,10 +18,10 @@ class Question extends BaseModel {
             $questions[] = new Question(array(
                 'id' => $row['id'],
                 'added' => $row['added'],
+                'title' => $row['title'],
                 'questiontext' => $row['questiontext'],
-                'subject' => $row['subject'],
-                'student_id' => $row['student_id'],
-                'answer_id' => $row['answer_id'],
+//                'subject_id' => $row['subject_id'],
+//                'email' => $row['email'],
                 'status' => $row['status']
             ));
         }
@@ -38,10 +38,10 @@ class Question extends BaseModel {
             $question = new Question(array(
                 'id' => $row['id'],
                 'added' => $row['added'],
+                'title' => $row['title'],
                 'questiontext' => $row['questiontext'],
-                'subject' => $row['subject'],
-                'student_id' => $row['student_id'],
-                'answer_id' => $row['answer_id'],
+                //'subject' => $row['subject'],
+                //'student_id' => $row['student_id'],
                 'status' => $row['status']
             ));
 
@@ -50,5 +50,31 @@ class Question extends BaseModel {
 
         return null;
     }
+    
+    public function save() {
+        $query = DB::connection()->prepare('INSERT INTO Question (questiontext, title) VALUES (:questiontext, :title) RETURNING id');
+        
+        $query->execute(array('questiontext' => $this->questiontext, 'title' => $this->title));
+        
+        $row = $query->fetch();
+        $this->id = $row['id'];
+    }
+    
+    
+    public function update() {
+        $query = DB::connection()->prepare('UPDATE Question (questiontext, title) VALUES (:questiontext, :title) RETURNING id');
+        
+        $query->execute(array('questiontext' => $this->questiontext, 'title' => $this->title));
+        
+        $row = $query->fetch();
+        $this->id = $row['id'];
+    }
+    
+    public function destroy() {
+        $query = DB::connection()->prepare('DELETE FROM QUESTION');
+        
+        
+    }
+    
 
 }

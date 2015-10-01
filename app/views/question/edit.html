@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<h1>edit!</h1>
+<form method="post" action="{{base_path}}/question">
+    <br><br>
+    
+    <div>
+        <label>otsikko</label>
+        <textarea name="title" class="form-control">{{question.title}}
+        </textarea>
+        <br><br>
+    </div>
+    
+    <div>
+        <label>kysymys</label>
+        <textarea name="questiontext" class="form-control">{{question.questiontext}}
+        </textarea>
+        <br><br>
+    </div>
+    
+    <div>
+        <label>vastaus</label>
+        <textarea name="answeartext" class="form-control">
+        </textarea>
+        <br><br>
+    </div>
+    
+    <button type="submit" class="btn btn-danger">päivitä</button>
+
+</form>
+
+{% endblock %}

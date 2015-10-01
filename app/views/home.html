@@ -7,9 +7,11 @@
 
 <p>
     <a href="http://google.com" class="btn btn-primary btn-lg">Etsi aihealueen mukaan<span class="glyphicon glyphicon-chevron-right"></span></a>
-    <a href="{{base_path}}/ask" class="btn btn-primary btn-lg pull-right">Esitä uusi kysymys<span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="{{base_path}}/new" class="btn btn-primary btn-lg pull-right">Esitä uusi kysymys<span class="glyphicon glyphicon-chevron-right"></span></a>
 </p>
-
+<div class="alert alert-success">
+  {{message}}
+</div>
 <p class="lead"> 
     Viimeisimmät kysymykset:
 </p>
@@ -18,19 +20,31 @@
     <thead>
         <tr>
             <th>Otsikko</th>
-            <th>Aihealue</th>
+            <th>kysymys</th>
             <th>Päivämäärä</th>
             <th>Status</th>
             <th></th>
         </tr>
-        <tr>
+        <!--<tr>
             <th></th>
             <th></th>
             <th></th>
             <th></th>
-            <!--<button class="btn btn-default">Bootstrap painike</button>-->
+            <button class="btn btn-default">Bootstrap painike</button>
             <th><a class="btn btn-default" href="{{base_path}}/esittely">lue</a></th>
-        </tr>
+        </tr>-->
     </thead>
+
+    <tbody>
+        {% for question in questions%}
+        <tr>
+            <td><a href="{{base_path}}/question/{{question.id}}">{{question.title}}</td>
+            <!--<td>{{question.title}}</td>-->
+            <td>{{question.questiontext}}</td>
+        </tr>
+
+
+        {% endfor %}
+    </tbody>
 </table>
 {% endblock %}

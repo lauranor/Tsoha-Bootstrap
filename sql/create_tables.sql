@@ -19,11 +19,11 @@ CREATE TABLE Subject(
 
 CREATE TABLE Question(
     id SERIAL PRIMARY KEY,
-    added DATE,
+    added DATE DEFAULT NOW(),
+    title varchar(50),
     questiontext varchar(400),
-    subject_id INTEGER REFERENCES Subject(id),
-    student_id INTEGER REFERENCES Student(id),
-    answer_id INTEGER REFERENCES Answer(id),
+    --subject_id INTEGER DEFAULT NULL REFERENCES Subject(id),
+    --student_id INTEGER DEFAULT NULL REFERENCES Student(id),
     status boolean DEFAULT false
 );
 

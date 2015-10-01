@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+{% import "macros/forms.html" as forms %}
+
+
+<h2>{{question.title}}</h2>
+
+
+
+
+
+<p>{{question.questiontext}}</p>
+<a href="{{base_path}}/edit/{{question.id}}" class="btn btn-default">muokkaa<span class="glyphicon glyphicon-chevron-right"></span></a>
+
+{{forms.destroy_button("#{base_path}/question/#{question.id}/destroy")}}
+{% endblock %}
