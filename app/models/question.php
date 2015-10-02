@@ -62,7 +62,7 @@ class Question extends BaseModel {
     
     
     public function update() {
-        $query = DB::connection()->prepare('UPDATE Question (questiontext, title) VALUES (:questiontext, :title) RETURNING id');
+        $query = DB::connection()->prepare('UPDATE Question (questiontext, title) VALUES (:questiontext, :title)');
         
         $query->execute(array('questiontext' => $this->questiontext, 'title' => $this->title));
         
@@ -70,9 +70,11 @@ class Question extends BaseModel {
         $this->id = $row['id'];
     }
     
-    public function destroy() {
-        $query = DB::connection()->prepare('DELETE FROM QUESTION');
+    public function destroy($id) {
+        $query = DB::connection()->prepare('DELETE FROM Question WHERE id = :id');
         
+        $query->execute();
+        $row = $query->fetch();
         
     }
     

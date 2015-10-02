@@ -7,7 +7,7 @@ CREATE TABLE Student(
 
 CREATE TABLE Counsellor(
     id SERIAL PRIMARY KEY,
-    nametext varchar(30) NOT NULL,
+    username varchar(30) NOT NULL,
     password varchar NOT NULL,
     administrator boolean DEFAULT false
 );

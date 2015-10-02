@@ -65,9 +65,9 @@ class QuestionController extends BaseController{
     public static function destroy($id) {
         $question = new Question(array('id' => $id));
         
-        $question->destroy();
+        $question->destroy($id);
         
-        Redirect::to('/game', array('message' => 'Peli on poistettu onnistuneesti!'));
+        Redirect::to('/', array('message' => 'Kysymys on nyt poistettu.'));
     }
 }
 

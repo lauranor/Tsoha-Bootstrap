@@ -2,7 +2,7 @@
 
 class Student extends BaseModel {
 
-    public $id, $nametext, $email;
+    public $id, $name, $email;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -17,7 +17,7 @@ class Student extends BaseModel {
         foreach ($rows as $row) {
             $students[] = new Student(array(
                 'id' => $row['id'],
-                'nametext' => $row['nametext'],
+                'name' => $row['text'],
                 'email' => $row['email']
             ));
         }
@@ -33,7 +33,7 @@ class Student extends BaseModel {
         if ($row) {
             $student = new Student(array(
                 'id' => $row['id'],
-                'nametext' => $row['nametext'],
+                'name' => $row['name'],
                 'email' => $row['email']
             ));
 

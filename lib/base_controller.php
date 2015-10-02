@@ -3,7 +3,15 @@
   class BaseController{
 
     public static function get_user_logged_in(){
-      // Toteuta kirjautuneen käyttäjän haku tähän
+      
+       if(isset($_SESSION['counsellor'])) {
+            $counsellor_id = $_SESSION['counsellor'];
+            
+            $counsellor = Counsellor::find($counsellor_id);
+            
+            return $counsellor;
+        } 
+        
       return null;
     }
 

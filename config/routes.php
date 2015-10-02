@@ -17,6 +17,11 @@ $routes->post('/login', function() {
     UserController::handle_login();
 });
 
+//uloskirjautuminen
+$routes->get('/logout', function() {
+    UserController::logout();
+});
+
 //kysymyksen sivu
 $routes->get('/esittely', function() {
     HelloWorldController::esittely();
@@ -28,7 +33,7 @@ $routes->get('/new', function() {
 });
 
 $routes->get('/edit/:id', function($id) {
-   QuestionController::edit($id);
+    QuestionController::edit($id);
 });
 
 //kysymysten listaussivu / etusivu
@@ -36,26 +41,26 @@ $routes->get('/', function() {
     QuestionController::index();
 });
 
-$routes->post('/question', function(){
+$routes->post('/question', function() {
     QuestionController::store();
 });
 
 
-$routes->get('/question/:id', function($id){
+$routes->get('/question/:id', function($id) {
     QuestionController::show($id);
 });
 
 //kysymyksen muokkaaminen
-$routes->get('/question/:id/edit', function($id){
-QuestionController::edit($id);
+$routes->get('/question/:id/edit', function($id) {
+    QuestionController::edit($id);
 });
 
-$routes->post('/question/:id/edit', function($id){
-QuestionController::update($id);
+$routes->post('/question/:id/edit', function($id) {
+    QuestionController::update($id);
 });
 
 //kysymyksen poistaminen
 $routes->post('/question/:id/destroy', function($id) {
-QuestionController::destroy($id);
+    QuestionController::destroy($id);
 });
 
