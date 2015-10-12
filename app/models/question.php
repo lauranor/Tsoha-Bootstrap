@@ -2,15 +2,16 @@
 
 class Question extends BaseModel {
 
-    public $id, $date, $questiontext, $title, $subject, $status, $student_id;
+    public $id, $added, $questiontext, $title, $category_id, $nametext, $status, $categoryname;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validate_title');
     }
 
     public static function all() {
-        $query = DB::connection()->prepare('SELECT* FROM Question');
-        $query->execute();
+        $query = DB::connection()->prepare('SELECT* FROM Question ORDER BY added');
+        $query->execute(); 
         $rows = $query->fetchAll();
         $questions = array();
 
@@ -20,8 +21,8 @@ class Question extends BaseModel {
                 'added' => $row['added'],
                 'title' => $row['title'],
                 'questiontext' => $row['questiontext'],
-//                'subject_id' => $row['subject_id'],
-//                'email' => $row['email'],
+                'nametext' => $row['nametext'],
+                'category_id' => $row['category_id'],
                 'status' => $row['status']
             ));
         }
@@ -40,6 +41,7 @@ class Question extends BaseModel {
                 'added' => $row['added'],
                 'title' => $row['title'],
                 'questiontext' => $row['questiontext'],
+                'nametext' => $row['nametext'],
                 //'subject' => $row['subject'],
                 //'student_id' => $row['student_id'],
                 'status' => $row['status']
@@ -52,31 +54,50 @@ class Question extends BaseModel {
     }
     
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Question (questiontext, title) VALUES (:questiontext, :title) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO Question (questiontext, title, nametext, category_id) VALUES (:questiontext, :title, :nametext, :category_id) RETURNING id');
         
-        $query->execute(array('questiontext' => $this->questiontext, 'title' => $this->title));
+        $query->execute(array('questiontext' => $this->questiontext, 'title' => $this->title, 'nametext'=> $this->nametext,'category_id' => $this->category_id));
         
         $row = $query->fetch();
         $this->id = $row['id'];
     }
     
     
-    public function update() {
-        $query = DB::connection()->prepare('UPDATE Question (questiontext, title) VALUES (:questiontext, :title)');
+    public function update($id) {
+        $query = DB::connection()->prepare('UPDATE Question SET questiontext = :questiontext, title = :title WHERE id = :id');
         
-        $query->execute(array('questiontext' => $this->questiontext, 'title' => $this->title));
+        $query->execute(array('questiontext' => $this->questiontext, 'title' => $this->title, 'id' => $id));
         
-        $row = $query->fetch();
-        $this->id = $row['id'];
     }
     
     public function destroy($id) {
         $query = DB::connection()->prepare('DELETE FROM Question WHERE id = :id');
         
-        $query->execute();
-        $row = $query->fetch();
+        $query->execute(array('id' => $id));
         
     }
+    
+    public function validate_title() {
+        $errors = array();
+        
+        if($this->title == '' || $this->title == null) {
+            $errors[] = 'Otsikko ei saa olla tyhjä!';
+        }
+        if(strlen($this->title) < 5) {
+            $errors[] = 'Otsikon pituus tulee olla vähintään 5 merkkiä.';
+        }
+        
+        return $errors;
+    }
+    
+    public function answered() {
+        $query = DB::connection()->prepare('UPDATE Question SET status = :status WHERE id = :id');
+        
+        $query->execute(array('status' => 'TRUE', 'id' => $this->id));
+        
+    }
+    
+    
     
 
 }

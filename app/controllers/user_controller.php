@@ -16,7 +16,7 @@ class UserController extends BaseController{
         } else {
             $_SESSION['counsellor'] = $counsellor->id;
             
-            Redirect::to('/', array('message' => 'Kirjautuneena tunnuksella ' . $counsellor->username . '!'));
+            Redirect::to('/', array('message' => 'Kirjautuneena tunnuksella ' . $counsellor->username));
         }
     }
     

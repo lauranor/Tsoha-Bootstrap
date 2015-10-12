@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Hae aihealueen mukaan:</h3>
+
+{% if message %} 
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endif %} 
+    
+<!--<form method="post" action="{{base_path}}/search">
+      
+    <div class="form-group">
+        <label>aihealue</label>
+        <select class="form-control" name="category">
+            {% for category in categories %}
+            <option value="{{category.id}}">{{category.category_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">etsi</button>
+
+
+        
+
+</form>-->
+
+{% endblock %}
+

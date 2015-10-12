@@ -1,8 +1,8 @@
 <?php
 
-class Subject extends BaseModel {
+class Category extends BaseModel {
 
-    public $id, $text;
+    public $id, $category_name;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -17,29 +17,35 @@ class Subject extends BaseModel {
         foreach ($rows as $row) {
             $categories[] = new Category(array(
                 'id' => $row['id'],
-                'cateory' => $row['category']
+                'category_name' => $row['category_name']
             ));
         }
 
         return $categories;
     }
-
+    
     public static function find($id) {
-        $query = DB::connection()->prepare('SELECT * FROM Question WHERE id = :id LIMIT 1');
+        $query = DB::connection()->prepare('SELECT * FROM Category WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
 
         if ($row) {
-            $subject = new Subject(array(
+            $category = new Subject(array(
                 'id' => $row['id'],
-                'subject' => $row['subject']
+                'category_name' => $row['category_name']
             ));
 
-            return $subject;
+            return $category;
         }
 
         return null;
     }
 
 }
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 

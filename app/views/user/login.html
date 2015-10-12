@@ -4,9 +4,11 @@
 
 <!-- Kaikki lomakkeen elementit form-tagin sisään -->
 <form method="post" action="{{base_path}}/login">
+    {% if message %}
     <div class="alert alert-success">
         {{message}}
     </div>
+    {% endif %}
 
     <div class="form-group">
         <label>Käyttäjätunnus</label>

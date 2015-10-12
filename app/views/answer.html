@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Vastauksesi:</h3>
+
+    
+
+<form method="post" action="{{base_path}}/answer/{{question.id}}">
+      
+    
+    <div>
+        <br><br>
+        <textarea name="answertext" class="form-control"></textarea>
+        <input type="hidden" name="question_id" value="{{question.id}}">
+        <br>
+        <button type="submit" class="btn btn-primary">lähetä</button>
+        
+    </div>
+
+
+        
+
+</form>
+
+{% endblock %}
+

@@ -23,9 +23,9 @@ $routes->get('/logout', function() {
 });
 
 //kysymyksen sivu
-$routes->get('/esittely', function() {
-    HelloWorldController::esittely();
-});
+//$routes->get('/esittely', function() {
+//    HelloWorldController::esittely();
+//});
 
 //uuden kysymisivu
 $routes->get('/new', function() {
@@ -34,6 +34,10 @@ $routes->get('/new', function() {
 
 $routes->get('/edit/:id', function($id) {
     QuestionController::edit($id);
+});
+
+$routes->post('/edit/:id', function($id) {
+    QuestionController::update($id);
 });
 
 //kysymysten listaussivu / etusivu
@@ -62,5 +66,18 @@ $routes->post('/question/:id/edit', function($id) {
 //kysymyksen poistaminen
 $routes->post('/question/:id/destroy', function($id) {
     QuestionController::destroy($id);
+});
+
+//vastauslomake
+$routes->get('/answer/:id', function() {
+    AnswerController::answer();
+});
+
+$routes->post('/answer/:id', function() {
+    AnswerController::store();
+});
+
+$routes->get('/search', function() {
+    QuestionController::search();
 });
 

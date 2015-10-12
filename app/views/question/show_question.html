@@ -6,11 +6,19 @@
 <h2>{{question.title}}</h2>
 
 
+<p>Kysymyksen lähetti: {{question.nametext}}</p>
 
-
+<br>
 
 <p>{{question.questiontext}}</p>
-<a href="{{base_path}}/edit/{{question.id}}" class="btn btn-default">muokkaa<span class="glyphicon glyphicon-chevron-right"></span></a>
 
-{{forms.destroy_button("#{base_path}/question/#{question.id}/destroy")}}
+<br>
+<a href="{{base_path}}/edit/{{question.id}}" class="btn btn-default">muokkaa</a>
+
+<a href="{{base_path}}/answer/{{question.id}}" class="btn btn-default">vastaa</a>
+
+
+<form method="post" action="{{base_path}}/question/{{question.id}}/destroy" style="display: inline-block;">
+    <button type="submit" class="btn btn-danger">{{text|default('Poista')}}</button>
+  </form> 
 {% endblock %}
