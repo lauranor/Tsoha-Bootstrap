@@ -2,8 +2,11 @@
 
 class AnswerController extends BaseController {
     
-    public static function answer() {
-        View::make('answer.html');
+    public static function answer($id) {
+        self::check_logged_in();
+        $question = Question::find($id);
+        
+        View::make('answer.html', array('question' => $question));
     }
     
     public static function store() {

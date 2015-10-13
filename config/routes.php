@@ -66,8 +66,8 @@ $routes->post('/question/:id/destroy', function($id) {
 });
 
 //vastauslomake
-$routes->get('/answer/:id', function() {
-    AnswerController::answer();
+$routes->get('/answer/:id', function($id) {
+    AnswerController::answer($id);
 });
 
 $routes->post('/answer', function() {
@@ -76,5 +76,9 @@ $routes->post('/answer', function() {
 
 $routes->get('/search', function() {
     QuestionController::search();
+});
+
+$routes->post('/search/:id', function($id) {
+    QuestionController::search_by_category($id);
 });
 

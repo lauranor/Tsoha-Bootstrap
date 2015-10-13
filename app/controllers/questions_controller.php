@@ -10,6 +10,10 @@ class QuestionController extends BaseController {
 
     public static function show($id) {
         $question = Question::find($id);
+        // if (question.status) {
+        //    $answer = Answer::find($id);
+            
+        //    View::make('question/show_question.html', array('question' => $question, 'answer' =>$answer));
 
         View::make('question/show_question.html', array('question' => $question));
     }
@@ -91,7 +95,16 @@ class QuestionController extends BaseController {
     }
     
     public static function search() {
-        View::make('/search.html', array('message' => 'Haetaan kysymyksiä.'));
+        $categories = Category::all();
+        View::make('/search.html', array('categories' => $categories));
+    }
+    
+    public static function search_by_category($id) {
+        //$category = Category::find($id);
+        
+        $questions = Question::find_by_category($id);
+        
+        View::make('/show_search.html', array('questions' => $questions));
     }
 
 }

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Hae aihealueen mukaan:</h3>
+
+{% if message %} 
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endif %} 
+    
+<!--<form method="post" action="{{base_path}}/search">
+      
+    <div class="form-group">
+        <label>aihealue</label>
+        <select class="form-control" name="category">
+            {% for category in categories %}
+            <option value="{{category.id}}">{{category.category_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">etsi</button>
+
+
+        
+
+</form>-->
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+        <th>Otsikko</th>
+        <th>Aihealue</th>
+        <th>Päivämäärä</th>
+        <th>Status</th>
+        </tr>
+        
+    </thead>
+
+    <tbody>
+        {% for question in questions%}
+        <tr>
+        <td><a href="{{base_path}}/question/{{question.id}}">{{question.title}}</td>
+        <td>{{question.category_id}}</td>
+        <td>{{question.added}}</td>
+        <td>{% if question.status %}
+                <label class="label label-success">vastattu
+              {% else %}
+                <label class="label label-danger">vastaamatta
+              {% endif %}</td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+
+{% endblock %}

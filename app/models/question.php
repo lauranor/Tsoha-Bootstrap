@@ -96,6 +96,28 @@ class Question extends BaseModel {
         
     }
     
+    public function find_by_category($id) {
+        $query = DB::connection()->prepare('SELECT * FROM Question WHERE category_id = :id');
+        $query->execute(array('category_id' => $id)); 
+        $rows = $query->fetchAll();
+        $questions = array();
+
+        foreach ($rows as $row) {
+            $questions[] = new Question(array(
+                'id' => $row['id'],
+                'added' => $row['added'],
+                'title' => $row['title'],
+                'questiontext' => $row['questiontext'],
+                'nametext' => $row['nametext'],
+                'category_id' => $row['category_id'],
+                'status' => $row['status']
+            ));
+        }
+
+        return $questions;
+        
+    }
+    
     
     
 

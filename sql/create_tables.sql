@@ -25,7 +25,6 @@ CREATE TABLE Question(
     answertext varchar (400),
     nametext varchar(30),
     category_id INTEGER DEFAULT NULL REFERENCES Category(id),
-    --student_id INTEGER DEFAULT NULL REFERENCES Student(id),
     status boolean DEFAULT false
 );
 
