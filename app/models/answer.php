@@ -10,7 +10,7 @@ class Answer extends BaseModel {
     }
 
     public static function save() {
-        $query = DB::connection()->prepare('INSERT INTO Answer (answertext, question_id) VALUES (:anwertext, :question_id) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO Answer (answertext, question_id) VALUES (:answertext, :question_id) RETURNING id');
 
         $query->execute(array('answertext' => $this->answertext, 'question_id' => $this->question_id));
 
