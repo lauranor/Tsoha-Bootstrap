@@ -91,7 +91,7 @@ class QuestionController extends BaseController {
     }
     
     public static function search() {
-        Redirect::to('/search', array('message' => 'Haetaan kysymyksiä.'));
+        View::make('/search.html', array('message' => 'Haetaan kysymyksiä.'));
     }
 
 }

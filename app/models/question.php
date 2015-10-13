@@ -42,8 +42,7 @@ class Question extends BaseModel {
                 'title' => $row['title'],
                 'questiontext' => $row['questiontext'],
                 'nametext' => $row['nametext'],
-                //'subject' => $row['subject'],
-                //'student_id' => $row['student_id'],
+                'category_id' => $row['category_id'],
                 'status' => $row['status']
             ));
 

@@ -1,8 +1,5 @@
 <?php
 
-//  $routes->get('/', function() {
-//    HelloWorldController::index();
-//  });
 
 $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
@@ -73,7 +70,7 @@ $routes->get('/answer/:id', function() {
     AnswerController::answer();
 });
 
-$routes->post('/answer/:id', function() {
+$routes->post('/answer', function() {
     AnswerController::store();
 });
 
