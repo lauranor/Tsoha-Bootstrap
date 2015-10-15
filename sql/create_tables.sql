@@ -22,14 +22,13 @@ CREATE TABLE Question(
     added DATE DEFAULT NOW(),
     title varchar(50),
     questiontext varchar(400),
-    answertext varchar (400),
     nametext varchar(30),
-    category_id INTEGER DEFAULT NULL REFERENCES Category(id),
+    category_id INTEGER DEFAULT NULL REFERENCES Category(id) ON DELETE CASCADE,
     status boolean DEFAULT false
 );
 
 CREATE TABLE Answer(
     id SERIAL PRIMARY KEY,
-    question_id INTEGER REFERENCES Question(id),
+    question_id INTEGER REFERENCES Question(id) ON DELETE CASCADE,
     answertext varchar(400)
 );

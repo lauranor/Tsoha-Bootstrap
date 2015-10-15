@@ -10,13 +10,17 @@ class QuestionController extends BaseController {
 
     public static function show($id) {
         $question = Question::find($id);
-        // if (question.status) {
-        //    $answer = Answer::find($id);
+//        if ($question.status) {
+            $answers = Answer::find($id);
             
-        //    View::make('question/show_question.html', array('question' => $question, 'answer' =>$answer));
-
-        View::make('question/show_question.html', array('question' => $question));
+        View::make('question/show_question.html', array('question' => $question, 'answers' =>$answers));
+//        } 
+        
+        
+//        View::make('question/show_question.html', array('question' => $question));
+        
     }
+    
 
     public static function ask() {
         $categories = Category::all();

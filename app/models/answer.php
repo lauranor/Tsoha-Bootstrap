@@ -20,20 +20,20 @@ class Answer extends BaseModel {
 
     public function find($id) {
         $query = DB::connection() ->prepare('SELECT * FROM Answer WHERE question_id = :id');
-        $query->execute(array('question_id' => $id));
-        $row = $query->fetch();
+        $query->execute(array('id' => $id));
+        $rows = $query->fetchAll();
+        $answers = array();
         
-        if ($row) {
-            $answer = new Answer(array(
+        foreach ($rows as $row) {
+            $answers[] = new Answer(array(
                 'id' => $row['id'],
                 'question_id' => $row['question_id'],
                 'answertext' => $row['answertext']
             ));
 
-            return $answer;
         }
 
-        return null;
+        return $answers;
     }
     
     

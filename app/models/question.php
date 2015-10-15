@@ -1,8 +1,10 @@
 <?php
 
 class Question extends BaseModel {
+    
+    //id, added, title, questiontext, category_id, nametext, (id in (select question_id from answer)) as status, LEFT JOIN Category ON category_id = category.id
 
-    public $id, $added, $questiontext, $title, $category_id, $nametext, $status, $categoryname;
+    public $id, $added, $questiontext, $title, $category_id, $nametext, $status;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -10,7 +12,7 @@ class Question extends BaseModel {
     }
 
     public static function all() {
-        $query = DB::connection()->prepare('SELECT* FROM Question ORDER BY added');
+        $query = DB::connection()->prepare('SELECT question.id, added, title, questiontext, category_name as category_id, nametext, (question.id in (select question_id from answer)) as status FROM Question LEFT JOIN Category ON category_id = category.id ORDER BY question.id DESC');
         $query->execute(); 
         $rows = $query->fetchAll();
         $questions = array();

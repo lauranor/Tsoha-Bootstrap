@@ -14,7 +14,16 @@
 
 <br>
 
-<h4>Vastaus:</h4>
+<h4>Vastaukset:</h4>
+{% if not answers %}
+<p>Kysymykseen ei ole vielä vastauksia.</p>
+{% endif %}
+
+{% for answer in answers  %}
+
+<p>{{answer.answertext}}</p>
+<br><br>
+{% endfor %}
 
 
 
