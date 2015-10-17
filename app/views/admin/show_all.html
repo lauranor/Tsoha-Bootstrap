@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if message %} 
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endif %} 
+
+<table class="table table-striped table-bordered">
+
+
+    <tbody>
+        {% for counsellor in users%}
+        <tr>
+        <td>{{counsellor.username}}</td>
+        <td>{% if counsellor.administrator %}
+        <label class="label label-success">admin
+            {% else %}
+            <label class="label label-danger">user
+            {% endif %}</td>
+        <td><a href="{{base_path}}/edit_user/{{counsellor.id}}" class="btn btn-info btn-sm">muokkaa</a></td>
+        <td><a href="{{base_path}}/delete_user/{{question.id}}" class="btn btn-warning btn-sm">poista</a></td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+<a href="{{base_path}}/new_user" class="btn btn-default">Lisää käyttäjä</a>
+
+{% endblock %}

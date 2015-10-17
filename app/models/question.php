@@ -2,7 +2,6 @@
 
 class Question extends BaseModel {
     
-    //id, added, title, questiontext, category_id, nametext, (id in (select question_id from answer)) as status, LEFT JOIN Category ON category_id = category.id
 
     public $id, $added, $questiontext, $title, $category_id, $nametext, $status;
 

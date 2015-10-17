@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<p>edit user</p>
+
+<form method="post" action="{{base_path}}/edit_user/{{counsellor.id}}">
+    <br><br>
+
+    <div>
+        <label>käyttäjätunnus</label>
+        <textarea name="title" class="form-control">{{counsellor.username}}
+        </textarea>
+        <br><br>
+    </div>
+
+    <div>
+        <label>salasana</label>
+        <textarea name="questiontext" class="form-control">{{counsellor.password}}
+        </textarea>
+    </div>
+    
+    <div class="radio">
+        <label><input type="radio" name="status" value= false>ohjaaja</label>
+    </div>
+    <div class="radio">
+        <label><input type="radio" name="status" value= true>ylläpito</label>
+    </div>
+
+
+    <button type="submit" class="btn btn-danger">päivitä</button>
+
+</form>
+
+{% endblock %}

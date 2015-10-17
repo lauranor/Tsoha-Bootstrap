@@ -1,6 +1,5 @@
 <?php
 
-
 $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
 });
@@ -23,7 +22,6 @@ $routes->get('/logout', function() {
 //$routes->get('/esittely', function() {
 //    HelloWorldController::esittely();
 //});
-
 //uuden kysymisivu
 $routes->get('/new', function() {
     QuestionController::ask();
@@ -52,13 +50,13 @@ $routes->get('/question/:id', function($id) {
 });
 
 //kysymyksen muokkaaminen
-$routes->get('/question/:id/edit', function($id) {
-    QuestionController::edit($id);
-});
+//$routes->get('/question/:id/edit', function($id) {
+//    QuestionController::edit($id);
+//});
 
-$routes->post('/question/:id/edit', function($id) {
-    QuestionController::update($id);
-});
+//$routes->post('/question/:id/edit', function($id) {
+//    QuestionController::update($id);
+//});
 
 //kysymyksen poistaminen
 $routes->post('/question/:id/destroy', function($id) {
@@ -82,3 +80,22 @@ $routes->post('/search/:id', function($id) {
     QuestionController::search_by_category($id);
 });
 
+$routes->get('/admin', function() {
+    UserController::show_users();
+});
+
+$routes->get('/user/:id', function($id){
+    UserController::show($id);
+});
+
+$routes->get('/edit_user/:id', function($id){
+    UserController::edit($id);
+});
+
+$routes->post('/edit_user/:id', function($id){
+    UserController::update($id);
+});
+
+$routes->get('new_user', function(){
+    UserController::new_user();
+});

@@ -43,6 +43,12 @@
                     </ul>
                     
                     {% if user_logged_in %}
+                    {% if user_logged_in.administrator %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{base_path}}/admin">Muokkaa käyttäjiä</a></li>
+                    </ul>
+                    {% endif %}
+                    
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{base_path}}/logout">Kirjaudu ulos</a></li>
                     </ul>

@@ -2,6 +2,8 @@
 
 INSERT INTO Counsellor (username, password) VALUES ('tarmo.tietaja@email.com', 'salasana123');
 
+INSERT INTO Counsellor (username, password, administrator) VALUES ('pirkko.parempi@email.com', '1972', true);
+
 INSERT INTO Category (category_name) VALUES ('Tyhmät kysymykset');
 
 INSERT INTO Category (category_name) VALUES ('Fiksut kysymykset');

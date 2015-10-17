@@ -5,14 +5,14 @@
 
 <h2>{{question.title}}</h2>
 
-
+<div class="well">
 <p>Kysymyksen lähetti: {{question.nametext}}</p>
 
 <br>
 
 <p>{{question.questiontext}}</p>
 
-<br>
+</div>
 
 <h4>Vastaukset:</h4>
 {% if not answers %}
@@ -20,9 +20,9 @@
 {% endif %}
 
 {% for answer in answers  %}
-
+<div class="well well-sm">
 <p>{{answer.answertext}}</p>
-<br><br>
+</div>
 {% endfor %}
 
 
