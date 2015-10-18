@@ -15,17 +15,19 @@
         <tr>
         <td>{{counsellor.username}}</td>
         <td>{% if counsellor.administrator %}
-        <label class="label label-success">admin
+                <label class="label label-success">admin
             {% else %}
-            <label class="label label-danger">user
+                <label class="label label-danger">user
             {% endif %}</td>
         <td><a href="{{base_path}}/edit_user/{{counsellor.id}}" class="btn btn-info btn-sm">muokkaa</a></td>
-        <td><a href="{{base_path}}/delete_user/{{question.id}}" class="btn btn-warning btn-sm">poista</a></td>
+        <td><form method="post" action="{{base_path}}/counsellor/{{counsellor.id}}/destroy" style="display: inline-block;">
+            <button type="submit" class="btn btn-warning btn-sm">{{text|default('poista')}}</button>
+            </form> </td>
         </tr>
         {% endfor %}
 
     </tbody>
-</table>
-<a href="{{base_path}}/new_user" class="btn btn-default">Lisää käyttäjä</a>
+                </table>
+                <a href="{{base_path}}/new_user" class="btn btn-default">Lisää käyttäjä</a>
 
-{% endblock %}
+                {% endblock %}

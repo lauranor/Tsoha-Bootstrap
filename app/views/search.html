@@ -9,11 +9,11 @@
 </div>
 {% endif %} 
     
-<form method="post" action="{{base_path}}/search/{{category.id}}">
+<form method="post" action="{{base_path}}/search">
       
     <div class="form-group">
         <label>aihealue</label>
-        <select class="form-control" name="category">
+        <select class="form-control" name="category_id">
             {% for category in categories %}
             <option value="{{category.id}}">{{category.category_name}}</option>
             {% endfor %}

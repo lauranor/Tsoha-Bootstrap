@@ -76,8 +76,8 @@ $routes->get('/search', function() {
     QuestionController::search();
 });
 
-$routes->post('/search/:id', function($id) {
-    QuestionController::search_by_category($id);
+$routes->post('/search', function() {
+    QuestionController::search_by_category();
 });
 
 $routes->get('/admin', function() {
@@ -96,6 +96,14 @@ $routes->post('/edit_user/:id', function($id){
     UserController::update($id);
 });
 
-$routes->get('new_user', function(){
+$routes->get('/new_user', function(){
     UserController::new_user();
+});
+
+$routes->post('/new_user', function(){
+    UserController::store();
+});
+
+$routes->post('/counsellor/:id/destroy', function($id) {
+    UserController::destroy($id);
 });

@@ -1,6 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
 
-<p>Jee</p>
+<form method="post" action="{{base_path}}/new_user">
 
+    <div>
+        <label>käyttäjätunnus</label>
+        <input type="text" name = "username">
+
+        <br><br>
+    </div>
+
+    <div>
+        <label>salasana</label>
+        <input type="text" name = "password">
+
+    </div>
+    
+    <div class="radio">
+        <label><input type="radio" name="administrator" value= false>ohjaaja</label>
+    </div>
+    <div class="radio">
+        <label><input type="radio" name="administrator" value= true>ylläpito</label>
+    </div>
+
+
+    <button type="submit" class="btn btn-danger">Lisää</button>
+    
+    
+    
+    
+</form>
 {% endblock %}

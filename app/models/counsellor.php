@@ -44,6 +44,12 @@ class Counsellor extends BaseModel {
 
         return null;
     }
+    
+    public function update($id) {
+        $query = DB::connection()->prepare('UPDATE Counsellor SET username = :username, password = :password, administrator = :administrator WHERE id = :id');
+        
+        $query->execute(array('username' => $this->username, 'password' => $this->password, 'administrator' => $this->administrator, 'id' => $id));
+    }
 
     public static function authenticate($username, $password) {
         $query = DB::connection()->prepare('SELECT * FROM Counsellor WHERE username = :username AND password = :password LIMIT 1');
@@ -62,5 +68,19 @@ class Counsellor extends BaseModel {
             return null;// Käyttäjää ei löytynyt, palautetaan null
         }
     }
-
+    
+    public function save(){
+        $query = DB::connection()->prepare('INSERT INTO Counsellor (username, password, administrator) VALUES (:username, :password, :administrator) RETURNING id');
+        
+        $query->execute(array('username' => $this->username, 'password' => $this->password, 'administrator'=> $this->administrator));
+        
+        $row = $query->fetch();
+        $this->id = $row['id'];
+    }
+    
+    public function destroy($id) {
+        $query = DB::connection()->prepare('DELETE FROM Counsellor WHERE id = :id');
+        
+        $query->execute(array('id' => $id));
+    }
 }

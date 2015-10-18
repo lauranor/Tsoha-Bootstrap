@@ -97,11 +97,12 @@ class QuestionController extends BaseController {
         View::make('/search.html', array('categories' => $categories));
     }
 
-    public static function search_by_category($id) {
-        //$category = Category::find($id);
-
-        $questions = Question::find_by_category($id);
-
+    public static function search_by_category() {
+        $params = $_POST;
+        $category_id = $params['category_id'];
+        
+        $questions = Question::find_by_category($category_id);
+        
         View::make('/show_search.html', array('questions' => $questions));
     }
 
