@@ -8,6 +8,12 @@
 </div>
 {% endif %}
 
+{% for error in errors %}
+<div class="alert alert-success">
+    {{error}}
+</div>
+{% endfor %}
+
 <!-- Kaikki lomakkeen elementit form-tagin sisään -->
 <form method="post" action="{{base_path}}/question">
     <!-- Tekstikenttä käyttäjätunnukselle -->
@@ -15,6 +21,7 @@
         <br><br>
         <label>otsikko</label>
         <input type="text" name="title" class="form-control" placeholder="Anna viestillesi kuvaava otsikko">
+
         <br>
     </div>
 

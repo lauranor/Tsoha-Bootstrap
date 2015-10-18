@@ -35,10 +35,11 @@ class QuestionController extends BaseController {
         ));
         $errors = $question->errors();
 
-        Kint::dump($errors);
+        //Kint::dump($errors);
 
         if (count($errors) > 0) {
-            View::make('question/new.html', array('errors' => $errors, 'question' => $question));
+            $categories = Category::all();
+            View::make('question/new.html', array('errors' => $errors, 'question' => $question, 'categories' => $categories));
         } else {
             $question->save();
 
@@ -84,13 +85,13 @@ class QuestionController extends BaseController {
         Redirect::to('/', array('message' => 'Kysymys on nyt poistettu.'));
     }
 
-    public static function mark_as_read($id) {
-        $question = Question::find($id);
-
-        $question->answered();
-
-        Redirect::to('/', array('message' => 'Vastaus on nyt lisätty.'));
-    }
+//    public static function mark_as_read($id) {
+//        $question = Question::find($id);
+//
+//        $question->answered();
+//
+//        Redirect::to('/', array('message' => 'Vastaus on nyt lisätty.'));
+//    }
 
     public static function search() {
         $categories = Category::all();
