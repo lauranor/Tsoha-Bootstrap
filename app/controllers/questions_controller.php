@@ -103,8 +103,9 @@ class QuestionController extends BaseController {
         $category_id = $params['category_id'];
         
         $questions = Question::find_by_category($category_id);
+        $categories = Category::all();
         
-        View::make('/show_search.html', array('questions' => $questions));
+        View::make('/search.html', array('questions' => $questions, 'categories' => $categories));
     }
 
 }
