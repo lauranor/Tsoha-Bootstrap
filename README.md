@@ -6,7 +6,7 @@ Yleisiä linkkejä:
 * [Linkki dokumentaatiooni](https://github.com/lauranor/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 Kirjautumista varten käyttäjätunnus ja salasana:
-tarmo.tietaja@email.com : salasana123
+pirkko.parempi@email.com : 1972
 
 ## Työn aihe
 
