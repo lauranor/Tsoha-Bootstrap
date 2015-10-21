@@ -17,8 +17,11 @@
         <label>kysymys</label>
         <textarea name="questiontext" class="form-control">{{question.questiontext}}
         </textarea>
+        
         <br><br>
     </div>
+    <input type="hidden" name="nametext" value="{{question.nametext}}">
+    <input type="hidden" name="category_id" value="{{question.category_id}}">
 
     
     <button type="submit" class="btn btn-danger">päivitä</button>

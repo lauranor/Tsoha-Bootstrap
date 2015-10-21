@@ -59,13 +59,14 @@ class QuestionController extends BaseController {
         $attributes = array(
             'id' => $id,
             'title' => $params['title'],
-            'questiontext' => $params['questiontext']
+            'questiontext' => $params['questiontext'],
+            'nametext' => $params['nametext'],
+            'category_id' => $params['category_id']
         );
 
         $question = new Question($attributes);
         $errors = $question->errors();
 
-        Kint::dump($errors);
 
         if (count($errors) > 0) {
             View::make('question/edit.html', array('errors' => $errors, 'attributes' => $attributes));

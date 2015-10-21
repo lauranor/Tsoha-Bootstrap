@@ -81,7 +81,7 @@ class Question extends BaseModel {
         } else if (strlen($this->title) < 5) {
             $errors[] = 'Otsikon pituus tulee olla vähintään 5 merkkiä.';
         }
-        if ($this->questiontext < 15 || $this->questiontext == NULL) {
+        if (strlen($this->questiontext) < 15 || $this->questiontext == NULL) {
             $errors[] = 'Kysymyksesi pituus tulee olla vähintään 15 merkkiä.';
         }
         if ($this->nametext == '' || $this->nametext == null) {
